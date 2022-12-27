@@ -51,6 +51,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Unit(models.Model):
     """Unit model to define types of measurement units"""
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
     name = models.CharField(max_length=15)
 
     def __str__(self):
@@ -60,7 +64,10 @@ class Unit(models.Model):
 class Address(models.Model):
     """Address model to get user addresses"""
     name = models.TextField()
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.name
@@ -100,7 +107,10 @@ class ProductPrice(models.Model):
 
 class Order(models.Model):
     """Order model to define an order"""
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
     address = models.ForeignKey(Address, on_delete=models.CASCADE)
     delivery = models.DateField(blank=True, null=True)
     note = models.CharField(max_length=100, blank=True)
@@ -111,7 +121,10 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     """OrderItem model to define the items of each order"""
-    order = models.ForeignKey(Order, related_name='products', on_delete=models.CASCADE)
+    order = models.ForeignKey(
+        Order, related_name='products',
+        on_delete=models.CASCADE
+    )
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
 

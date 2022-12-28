@@ -1,3 +1,4 @@
+from unittest.mock import patch
 from datetime import date
 
 from django.test import TestCase
@@ -122,3 +123,13 @@ class ModelTests(TestCase):
             note='high quality'
         ).exists()
         self.assertTrue(current_oder)
+
+    @patch('uuid.uuid4')
+    def test_app_file_name_uuid(self, mock_uuid):
+        """Test that image is saved in the correct location"""
+        uuid = 'test-uuid'
+        mock_uuid.return_value = uuid
+        file_path = models.app_image_file_path(None, 'image.jpg')
+
+        exp_path = f'uploads/app/{uuid}.jpg'
+        self.assertEqual(file_path, exp_path)

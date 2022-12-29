@@ -11,7 +11,6 @@ from market.serializers import AddressSerializer
 
 
 ADDRESSES_URL = reverse('market:address-list-create')
-# ADDRESSES_DETAIL_URL = reverse('market:address-detail')
 
 
 def create_user(**params):

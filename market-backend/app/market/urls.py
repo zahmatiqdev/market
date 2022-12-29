@@ -16,4 +16,14 @@ urlpatterns = [
         views.AddressDetailAPIView.as_view(),
         name='address-detail'
     ),
+    path(
+        'unit/',
+        views.UnitCreateListAPIView.as_view(),
+        name='unit-list-create'
+    ),
+    path(
+        'unit/<int:pk>/',
+        views.UnitDetailAPIView.as_view(),
+        name='unit-detail'
+    ),
 ]

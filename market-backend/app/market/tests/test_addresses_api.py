@@ -17,7 +17,7 @@ def create_user(**params):
     return get_user_model().objects.create_user(**params)
 
 
-class PublicAddressesTests(TestCase):
+class PublicAddressesAPITests(TestCase):
     """Test the publicly available addresses API"""
 
     def setUp(self):
@@ -30,7 +30,7 @@ class PublicAddressesTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
-class PrivateAddressesTests(TestCase):
+class PrivateAddressesAPITests(TestCase):
     """Test the authorized user addresses API"""
 
     def setUp(self):

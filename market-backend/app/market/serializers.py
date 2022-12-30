@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Address, Unit, Category
+from core.models import Address, Unit, Category, Product
 
 
 class AddressSerializer(serializers.ModelSerializer):
@@ -47,3 +47,24 @@ class CategorySerializer(serializers.ModelSerializer):
         if Category.objects.filter(name=attrs).exists():
             raise serializers.ValidationError('this name is exist.')
         return attrs
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    """Serializer for Product objects"""
+    category = serializers.SlugRelatedField(
+        many=True,
+        queryset=Category.objects.all(),
+        slug_field='name'
+    )
+    unit = serializers.SlugRelatedField(
+        queryset=Unit.objects.all(),
+        slug_field='name'
+    )
+
+    class Meta:
+        model = Product
+        fields = (
+            'id', 'category', 'unit', 'name', 'price',
+            'short_desc', 'long_desc', 'image',
+        )
+        read_only_field = ('id',)

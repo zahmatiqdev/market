@@ -36,4 +36,20 @@ urlpatterns = [
         views.CategoryDetailAPIView.as_view(),
         name='category-detail'
     ),
+
+    path(
+        'product/create/',
+        views.ProductCreateAPIView.as_view(),
+        name='product-create'
+    ),
+    path(
+        'product/',
+        views.ProductListAPIView.as_view(),
+        name='product-list'
+    ),
+    path(
+        'product/<int:pk>/',
+        views.ProductDetailAPIView.as_view(),
+        name='product-detail'
+    ),
 ]

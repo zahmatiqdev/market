@@ -2,7 +2,7 @@ from rest_framework import mixins, generics
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from core.models import Address, Unit
+from core.models import Address, Unit, Category
 
 from market import serializers
 
@@ -77,3 +77,25 @@ class UnitDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
+
+
+class CategoryCreateListAPIView(mixins.CreateModelMixin,
+                                generics.ListAPIView):
+    """Manage Create & List Category in database"""
+
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    queryset = Category.objects.all()
+    serializer_class = serializers.CategorySerializer
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+class CategoryDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    """Manage Detail, Update & Delete Category in database"""
+
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    queryset = Category.objects.all()
+    serializer_class = serializers.CategorySerializer

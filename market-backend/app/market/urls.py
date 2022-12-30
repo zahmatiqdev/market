@@ -26,4 +26,14 @@ urlpatterns = [
         views.UnitDetailAPIView.as_view(),
         name='unit-detail'
     ),
+    path(
+        'category/',
+        views.CategoryCreateListAPIView.as_view(),
+        name='category-list-create'
+    ),
+    path(
+        'category/<int:pk>/',
+        views.CategoryDetailAPIView.as_view(),
+        name='category-detail'
+    ),
 ]

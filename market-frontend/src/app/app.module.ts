@@ -12,6 +12,7 @@ import { AccountComponent } from './account/account.component';
 import { SignUpComponent } from './account/sign-up/sign-up.component';
 import { SignInComponent } from './account/sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
+import { ShopComponent } from './shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomeComponent } from './home/home.component';
     AccountComponent,
     SignUpComponent,
     SignInComponent,
-    HomeComponent
+    HomeComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { HomeComponent } from './home/home.component';
 
       {path: 'account', component: AccountComponent},
       {path: 'account/signup', component: SignUpComponent},
-      {path: 'account/signin', component: SignInComponent}
+      {path: 'account/signin', component: SignInComponent},
+      {path: 'shop', component: ShopComponent},
     ])
   ],
   providers: [

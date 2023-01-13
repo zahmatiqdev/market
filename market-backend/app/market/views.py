@@ -132,4 +132,4 @@ class ProductDetailAPIView(generics.RetrieveAPIView):
     authentication_classes = ()
     queryset = Product.objects.all()
     serializer_class = serializers.ProductSerializer
-    lookup_field = 'name'
+    lookup_field = 'id'

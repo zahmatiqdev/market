@@ -48,7 +48,7 @@ urlpatterns = [
         name='product-list'
     ),
     path(
-        'product/<int:pk>/',
+        'product/<int:id>/',
         views.ProductDetailAPIView.as_view(),
         name='product-detail'
     ),

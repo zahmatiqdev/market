@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { SignupService } from '../../services/signup.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,16 +12,15 @@ export class SignUpComponent implements OnInit {
 
   baseURL: string = "http://127.0.0.1:8000/";
 
-  constructor(private http: HttpClient){}
+  constructor(private signupService: SignupService){}
 
   ngOnInit(){}
 
   onSignUp(postData: {name: string, email: string, password: string}){
-    const createUserUrl = this.baseURL + 'api/user/create/';
-    this.http.post(createUserUrl, postData)
-    .subscribe(responseData => {
-      console.log(responseData);
-    });
+    this.signupService.signupRequest(postData)
+      .subscribe(responseData => {
+        console.log(responseData);
+      })
   }
 
   onCancel(){

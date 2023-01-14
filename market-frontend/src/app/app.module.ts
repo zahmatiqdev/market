@@ -13,6 +13,7 @@ import { SignUpComponent } from './account/sign-up/sign-up.component';
 import { SignInComponent } from './account/sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
+import { ProductDetailComponent } from './shop/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ShopComponent } from './shop/shop.component';
     SignUpComponent,
     SignInComponent,
     HomeComponent,
-    ShopComponent
+    ShopComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { ShopComponent } from './shop/shop.component';
       {path: 'account/signup', component: SignUpComponent},
       {path: 'account/signin', component: SignInComponent},
       {path: 'shop', component: ShopComponent},
+      {path: 'product/:id', component: ProductDetailComponent},
     ])
   ],
   providers: [

@@ -1,3 +1,11 @@
+.col-md-3:hover .item-detail .product__item{
+	border-radius: 5px; 
+	border: 3px solid #ccc
+}
+
+.col-md-3 .item-detail .product__item{
+	border-radius: 2px; border: 1px solid #ccc
+}
 
 .filter__item__custom {
 	text-align: center;

@@ -17,4 +17,10 @@ export class ProductService {
     const headers = { 'content-type': 'application/json' };
     return this.http.get(this.baseURL + 'api/market/product/', {'headers':headers})
   }
+
+  getProductDetailRequest(id: string): Observable<any>{
+    const headers = { 'content-type': 'application/json' };
+    return this.http.get(this.baseURL + 'api/market/product/' + id + '/', {'headers':headers})
+  }
+
 }

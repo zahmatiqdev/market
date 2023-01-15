@@ -44,7 +44,8 @@
                                             <h4><strong>{{ product.price }}€</strong></h4>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="#" style="background-color: #cc071e; padding: 6px 30px;" type="submit">
+                                            <a style="background-color: #cc071e; padding: 6px 30px;" 
+                                                type="submit" (click)="addToCart(product)">
                                                 <i class="fa fa-shopping-cart " style="font-size:24px;color:white"> +</i>
                                             </a>
                                         </div>

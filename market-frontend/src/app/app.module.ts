@@ -14,6 +14,7 @@ import { SignInComponent } from './account/sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
 import { ProductDetailComponent } from './shop/product-detail/product-detail.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProductDetailComponent } from './shop/product-detail/product-detail.com
     SignInComponent,
     HomeComponent,
     ShopComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -32,13 +34,14 @@ import { ProductDetailComponent } from './shop/product-detail/product-detail.com
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
+      { path: '', component: HomeComponent },
 
-      {path: 'account', component: AccountComponent},
-      {path: 'account/signup', component: SignUpComponent},
-      {path: 'account/signin', component: SignInComponent},
-      {path: 'shop', component: ShopComponent},
-      {path: 'product/:id', component: ProductDetailComponent},
+      { path: 'account', component: AccountComponent },
+      { path: 'account/signup', component: SignUpComponent },
+      { path: 'account/signin', component: SignInComponent },
+      { path: 'shop', component: ShopComponent },
+      { path: 'product/:id', component: ProductDetailComponent },
+      { path: 'cart', component: CartComponent },
     ])
   ],
   providers: [

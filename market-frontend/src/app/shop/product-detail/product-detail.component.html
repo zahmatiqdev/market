@@ -35,11 +35,11 @@ background-size: cover;background-position: top center;background-repeat:no-repe
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input id="amount" type="number" value=1>
+                                    <input id="amount" type="number" value=1 #quantityItem>
                                 </div>
                             </div>
                         </div>
-                        <button class="primary-btn" type="submit" (click)="addToCart(product)">ADD TO CARD</button>
+                        <button class="primary-btn" type="submit" (click)="addToCart(product, quantityItem)">ADD TO CARD</button>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>

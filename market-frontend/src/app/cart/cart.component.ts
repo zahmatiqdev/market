@@ -12,4 +12,8 @@ export class CartComponent {
   
   constructor(private cartService: CartService) {}
 
+  onTotalPrice(price: number = 0, quantity: number = 0) {
+    return this.cartService.multiplicationTwoNumber(price, quantity)
+  }
+
 }

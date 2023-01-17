@@ -12,6 +12,10 @@ export class CartComponent {
 
   constructor(private cartService: CartService) {}
 
+  onRemoveItem(itemIndex:number){
+    this.items.splice(itemIndex, 1)
+  }
+
   onTotalEachItemPrice(price: number=0, quantity: number=0) {
     return this.cartService.onMultiplicationTwoNumberService(price, quantity)
   }

@@ -44,10 +44,12 @@ export class CartService {
   }
 
   onSubtotalPriceService(){
+    let subtotalPrice = 0;
     for (var item of this.items){
-        this.subtotalPrice += this.onMultiplicationTwoNumberService(item.price, item.quantity); 
+        subtotalPrice += this.onMultiplicationTwoNumberService(item.price, item.quantity); 
     }
-    return this.subtotalPrice
+    this.subtotalPrice = subtotalPrice;
+    return subtotalPrice
   }
   
   onTaxPriceService(tax: number=0){

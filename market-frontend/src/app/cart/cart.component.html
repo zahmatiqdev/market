@@ -33,7 +33,7 @@ background-size: cover;background-position: top center;background-repeat:no-repe
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody *ngFor="let item of items">
+                        <tbody *ngFor="let item of items; let i = index">
                             <tr>
                                 <td class="shoping__cart__item">
                                     <h4><strong>{{ item.name }}</strong></h4>
@@ -47,7 +47,7 @@ background-size: cover;background-position: top center;background-repeat:no-repe
                                 <td class="shoping__cart__total">
                                     {{ onTotalEachItemPrice(item.price, item.quantity)| number }}€
                                 </td>
-                                <td class="shoping__cart__item__close">
+                                <td class="shoping__cart__item__close" (click)="onRemoveItem(i)">
                                     <span class="icon_close"></span>
                                 </td>
                             </tr>

@@ -116,7 +116,8 @@ class ModelTests(TestCase):
             user=user,
             address=address,
             delivery=date(year=2022, month=2, day=1),
-            note='high quality'
+            note='high quality',
+            price=1.0
         )
 
         current_oder = models.Order.objects.filter(

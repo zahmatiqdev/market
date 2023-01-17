@@ -2,7 +2,7 @@ from rest_framework import mixins, generics
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from core.models import Address, Unit, Category, Product
+from core.models import Address, Unit, Category, Product, Order
 
 from market import serializers
 
@@ -133,3 +133,23 @@ class ProductDetailAPIView(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = serializers.ProductSerializer
     lookup_field = 'id'
+
+
+class OrderCreateAPIView(generics.CreateAPIView):
+    """Define Order View only for Create"""
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    serializer_class = serializers.OrderSerializerCreate
+    queryset = Order.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+class OrderListAPIView(generics.ListAPIView):
+    """Manage List Order in database"""
+
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    serializer_class = serializers.OrderSerializerCreate
+    queryset = Order.objects.all()

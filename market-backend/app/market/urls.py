@@ -52,4 +52,14 @@ urlpatterns = [
         views.ProductDetailAPIView.as_view(),
         name='product-detail'
     ),
+    path(
+        'order/create/',
+        views.OrderCreateAPIView.as_view(),
+        name='order-create'
+    ),
+    path(
+        'order/',
+        views.OrderListAPIView.as_view(),
+        name='order-list'
+    ),
 ]

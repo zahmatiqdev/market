@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from core.models import Address, Unit, Category, Product
+from core.models import Address, Unit, Category, \
+                        Product, OrderItem, Order
 
 
 class AddressSerializer(serializers.ModelSerializer):
@@ -68,3 +69,28 @@ class ProductSerializer(serializers.ModelSerializer):
             'short_desc', 'long_desc', 'image',
         )
         read_only_field = ('id',)
+
+
+class OrderItemSerializer(serializers.ModelSerializer):
+    """Serializer for OrderItem object."""
+
+    class Meta:
+        model = OrderItem
+        fields = ['product', 'quantity']
+
+
+class OrderSerializerCreate(serializers.ModelSerializer):
+    """Serializer for Order object"""
+    products = OrderItemSerializer(many=True)
+
+    class Meta:
+        model = Order
+        fields = ['delivery', 'note', 'address', 'products', 'price']
+        read_only_field = ('user', 'id',)
+
+    def create(self, validated_data):
+        products_data = validated_data.pop('products')
+        order = Order.objects.create(**validated_data)
+        for product_data in products_data:
+            OrderItem.objects.create(order=order, **product_data)
+        return order

@@ -17,12 +17,12 @@ def create_user(**params):
 
 
 def create_unit(user, name):
-    """Create a create unit"""
+    """Create a sample unit"""
     return Unit.objects.create(user=user, name=name)
 
 
 def create_category(name):
-    """Create a create category"""
+    """Create a sample category"""
     return Category.objects.create(name=name)
 
 

@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
 import { ProductDetailComponent } from './shop/product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CartComponent } from './cart/cart.component';
     HomeComponent,
     ShopComponent,
     ProductDetailComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -35,13 +37,13 @@ import { CartComponent } from './cart/cart.component';
     AppRoutingModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-
       { path: 'account', component: AccountComponent },
       { path: 'account/signup', component: SignUpComponent },
       { path: 'account/signin', component: SignInComponent },
       { path: 'shop', component: ShopComponent },
       { path: 'product/:id', component: ProductDetailComponent },
       { path: 'cart', component: CartComponent },
+      { path: 'checkout', component: CheckoutComponent }
     ])
   ],
   providers: [

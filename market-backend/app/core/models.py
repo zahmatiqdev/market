@@ -114,6 +114,7 @@ class Order(models.Model):
     address = models.ForeignKey(Address, on_delete=models.CASCADE)
     delivery = models.DateField(blank=True, null=True)
     note = models.CharField(max_length=100, blank=True)
+    price = models.DecimalField(max_digits=7, decimal_places=2)
 
     def __str__(self):
         return f"Order{self.pk}"

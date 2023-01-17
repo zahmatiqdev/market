@@ -1,0 +1,15 @@
+shopping.cart .product-list .qty {
+	width: 65px;
+	text-align: center;
+	border-color: #eee;
+	border: 1px solid #eee;
+	padding: 5px;
+  }
+
+.product__item__text .product-quantity .product-quantity-slider {
+	width: 140px;
+}
+  
+.product__item__text .product-quantity .product-quantity-slider input {
+	width: 130px;
+}

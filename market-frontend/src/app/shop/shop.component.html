@@ -40,12 +40,30 @@
                                     <h6>{{ product.short_desc }}</h6>
                                     <hr>
                                     <div class="row" style="text-align: center; margin-bottom: 15px;">
-                                        <div class="col-md-6" >
+                                        <div class="col-md-4" >
                                             <h4><strong>{{ product.price }}€</strong></h4>
                                         </div>
-                                        <div class="col-md-6">
-                                            <a style="background-color: #cc071e; padding: 6px 30px;" 
-                                                type="submit" (click)="addToCart(product)">
+                                        <div class="col-md-4 product-quantity" >
+                                            <input 
+                                                type="number" 
+                                                style="padding: 5px 5px;"
+                                                id="qty" 
+                                                class="input-text qty text" 
+                                                step="1" 
+                                                min="0" 
+                                                max="9" 
+                                                value="0" 
+                                                size="4"
+                                                #quantityItem
+                                                >
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <a 
+                                                style="background-color: #cc071e; padding: 5px 5px;" 
+                                                type="submit" 
+                                                (click)="addToCart(product, quantityItem)"
+                                            >
                                                 <i class="fa fa-shopping-cart " style="font-size:24px;color:white"> +</i>
                                             </a>
                                         </div>

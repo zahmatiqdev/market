@@ -34,8 +34,19 @@ background-size: cover;background-position: top center;background-repeat:no-repe
                         <p>{{ product.short_desc }}</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
-                                <div class="pro-qty">
-                                    <input id="amount" type="number" value=1 #quantityItem>
+                                <div class="product-quantity">
+                                    <input 
+                                        type="number" 
+                                        style="padding: 5px 5px;"
+                                        id="qty" 
+                                        class="input-text qty text" 
+                                        step="1" 
+                                        min="0" 
+                                        max="9" 
+                                        value="0" 
+                                        size="4"
+                                        #quantityItem
+                                        >
                                 </div>
                             </div>
                         </div>
@@ -78,4 +89,3 @@ background-size: cover;background-position: top center;background-repeat:no-repe
     </div>
 </section>
 <!-- Product Details Section End -->
-

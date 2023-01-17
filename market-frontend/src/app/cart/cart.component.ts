@@ -9,11 +9,22 @@ import { CartService } from '../services/cart.service';
 export class CartComponent {
   
   items = this.cartService.getItems();
-  
+
   constructor(private cartService: CartService) {}
 
-  onTotalPrice(price: number = 0, quantity: number = 0) {
-    return this.cartService.multiplicationTwoNumber(price, quantity)
+  onTotalEachItemPrice(price: number=0, quantity: number=0) {
+    return this.cartService.onMultiplicationTwoNumberService(price, quantity)
   }
 
+  onSubtotalPrice(){
+    return this.cartService.onSubtotalPriceService()
+  }
+
+  onTaxPrice(){
+    return this.cartService.onTaxPriceService(0.5)
+  }
+
+  onTotalPrice(){
+    return this.cartService.onTotalPriceService()
+  }
 }

@@ -45,7 +45,7 @@ background-size: cover;background-position: top center;background-repeat:no-repe
                                     <h4><strong>{{ item.quantity }}</strong></h4>
                                 </td>
                                 <td class="shoping__cart__total">
-                                    {{ onTotalPrice(item.price, item.quantity)| number }}€
+                                    {{ onTotalEachItemPrice(item.price, item.quantity)| number }}€
                                 </td>
                                 <td class="shoping__cart__item__close">
                                     <span class="icon_close"></span>
@@ -60,7 +60,7 @@ background-size: cover;background-position: top center;background-repeat:no-repe
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
                     <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                    <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                    <a href="#" class="primary-btn cart-btn cart-btn-right" ><span class="icon_loading"></span>
                         Upadate Cart</a>
                 </div>
             </div>
@@ -79,11 +79,11 @@ background-size: cover;background-position: top center;background-repeat:no-repe
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
-                        <li>Subtotal <span>0.0 €</span></li>
-                        <li>Tax <span>0.0 €</span></li>
-                        <li>Total <span>0.0 €</span></li>
+                        <li>Subtotal <span>{{ onSubtotalPrice()| number }} €</span></li>
+                        <li>Tax <span>{{ onTaxPrice()| number }} €</span></li>
+                        <li>Total <span>{{ onTotalPrice()| number }} €</span></li>
                     </ul>
-                    <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    <a href="checkout" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>
             </div>
         </div>

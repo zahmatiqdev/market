@@ -1,3 +1,4 @@
+import { CartService } from 'src/app/services/cart.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -46,7 +47,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
       { path: 'checkout', component: CheckoutComponent }
     ])
   ],
-  providers: [
+  providers: [ 
+    CartService,
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

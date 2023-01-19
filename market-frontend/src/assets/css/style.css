@@ -2098,6 +2098,14 @@ ol {
 	margin-bottom: 25px;
 }
 
+.checkout__form h2 {
+	color: #1c1c1c;
+	font-weight: 700;
+	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 20px;
+	margin-bottom: 25px;
+}
+
 .checkout__form p {
 	column-rule: #b2b2b2;
 }
@@ -2135,6 +2143,14 @@ ol {
 
 .checkout__input__checkbox {
 	margin-bottom: 10px;
+}
+
+.select-address a {
+	color: red;
+}
+
+.select-address a:hover {
+	background-color: yellow;
 }
 
 .checkout__input__checkbox label {
@@ -2188,10 +2204,18 @@ ol {
 .checkout__order {
 	background: #f5f5f5;
 	padding: 40px;
-	padding-top: 30px;
+	padding-top: 10px;
 }
 
 .checkout__order h4 {
+	color: #1c1c1c;
+	font-weight: 700;
+	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.checkout__order h2 {
 	color: #1c1c1c;
 	font-weight: 700;
 	border-bottom: 1px solid #e1e1e1;
@@ -2243,6 +2267,19 @@ ol {
 
 .checkout__order .checkout__input__checkbox label {
 	padding-left: 20px;
+}
+
+.checkout__order .checkout__order__tax {
+	font-size: 18px;
+	color: #1c1c1c;
+	font-weight: 700;
+	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 15px;
+	margin-bottom: 25px;
+}
+
+.checkout__order .checkout__order__tax span {
+	float: right;
 }
 
 .checkout__order .checkout__order__total {

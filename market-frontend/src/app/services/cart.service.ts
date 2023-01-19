@@ -10,7 +10,6 @@ export class CartService {
 
   items: OrderItem[] = [];
   orderItem: any;
-  orderItemList: any = [];
   totalNumber: number = 0;
   subtotalPrice: number = 0;
   taxPrice: number = 0;
@@ -21,7 +20,7 @@ export class CartService {
   addToCart(product: Product, quantity: number = 1) {
     this.orderItem = {
       'id': product.id,
-      'name': product.name, 
+      'product': product.name, 
       'price': Number(product.price), 
       'image': product.image,
       'quantity': quantity
@@ -58,20 +57,5 @@ export class CartService {
 
   onTotalPriceService(){
     return this.totalPrice = this.subtotalPrice + this.taxPrice
-  }
-
-  onCreateOrderItemsService(){
-    for (var item of this.items) {
-      this.orderItemList.push(
-        {
-          id: item.id, 
-          name: item.name,
-          price: item.price, 
-          image: item.image, 
-          quantity: item.quantity
-        }
-      );
-    }
-    return this.orderItemList;
   }
 }

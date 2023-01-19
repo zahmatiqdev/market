@@ -18,6 +18,7 @@ import { ProductDetailComponent } from './shop/product-detail/product-detail.com
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

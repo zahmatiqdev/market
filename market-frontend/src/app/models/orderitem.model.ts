@@ -5,7 +5,7 @@ export class OrderItem {
   constructor(){}
 
   id:number|undefined;
-  name:string|undefined;
+  product:string|undefined;
   price:number|undefined;
   image:string|undefined;
   quantity: number|undefined;

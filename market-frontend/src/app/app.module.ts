@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 import { HeaderInterceptor } from './shared/header.interceptor';
 import { HeaderComponent } from './header/header.component';
 import { AccountComponent } from './account/account.component';
-import { SignUpComponent } from './account/sign-up/sign-up.component';
-import { SignInComponent } from './account/sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
 import { ProductDetailComponent } from './shop/product-detail/product-detail.component';
@@ -40,8 +40,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'account', component: AccountComponent },
-      { path: 'account/signup', component: SignUpComponent },
-      { path: 'account/signin', component: SignInComponent },
+      { path: 'signup', component: SignUpComponent },
+      { path: 'signin', component: SignInComponent },
       { path: 'shop', component: ShopComponent },
       { path: 'product/:id', component: ProductDetailComponent },
       { path: 'cart', component: CartComponent },

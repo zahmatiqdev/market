@@ -32,9 +32,10 @@
                           <div class="nav-padding">
                               <nav class="header__menu" style="padding: 0;">
                                   <ul>
-                                      <li><a routerLink="account/signin" *ngIf="!profile"><i class="fa fa-user"></i> Login </a></li>
-                                      <li><a routerLink="account/signin" *ngIf="profile"><i class="fa fa-user"></i> {{ profile.name }} </a>
+                                      <li><a routerLink="signin" *ngIf="!profile"><i class="fa fa-user"></i> Login </a></li>
+                                      <li><a routerLink="signin" *ngIf="profile"><i class="fa fa-user"></i> {{ profile.name }} </a>
                                           <ul class="header__menu__dropdown">
+                                              <li><a routerLink="account">Account</a></li>
                                               <li><a href="" (click)="onLogoutUser()">Logout</a></li>
                                           </ul>
                                       </li>

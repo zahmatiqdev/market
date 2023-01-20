@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import { SigninService } from '../../services/signin.service';
+import { SigninService } from '../services/signin.service';
 
 @Component({
   selector: 'app-sign-in',

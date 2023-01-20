@@ -65,6 +65,12 @@ import { OrderDetailComponent } from './account/order-list/order-detail/order-de
           }
         ]
       },
+      {
+        path: 'order-list', component: OrderListComponent,
+        children: [
+          { path: ':id', component: OrderDetailComponent }
+        ]
+      },
       { path: 'signup', component: SignUpComponent },
       { path: 'signin', component: SignInComponent },
       { path: 'shop', component: ShopComponent },

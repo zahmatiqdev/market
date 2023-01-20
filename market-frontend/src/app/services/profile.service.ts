@@ -15,7 +15,7 @@ export class ProfileService {
 
   profileRequest(): Observable<any>{
     const headers = { 'content-type': 'application/json'};
-    return this.http.get(this.baseURL + 'api/user/profile/', {'headers':headers})
+    return this.http.get(this.baseURL + 'api/user/account/', {'headers':headers})
   }
 
   getListAddressRequest(): Observable<any>{

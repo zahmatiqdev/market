@@ -16,6 +16,6 @@ export class SignupService {
   signupRequest(signup: Signup): Observable<any>{
     const headers = { 'content-type': 'application/json' };
     const body=JSON.stringify(signup);
-    return this.http.post(this.baseURL + 'api/user/create/', body, {'headers':headers})
+    return this.http.post(this.baseURL + 'api/user/signup/', body, {'headers':headers})
   }
 }

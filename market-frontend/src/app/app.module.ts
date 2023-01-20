@@ -17,6 +17,11 @@ import { ShopComponent } from './shop/shop.component';
 import { ProductDetailComponent } from './shop/product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AddressComponent } from './account/address/address.component';
+import { AddressDetailComponent } from './account/address/address-detail/address-detail.component';
+import { AddressEditComponent } from './account/address/address-edit/address-edit.component';
+import { AddressListComponent } from './account/address/address-list/address-list.component';
+import { AddressStartComponent } from './account/address/address-start/address-start.component';
 
 
 @NgModule({
@@ -30,7 +35,12 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ShopComponent,
     ProductDetailComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AddressComponent,
+    AddressDetailComponent,
+    AddressEditComponent,
+    AddressListComponent,
+    AddressStartComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +49,20 @@ import { CheckoutComponent } from './checkout/checkout.component';
     AppRoutingModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'account', component: AccountComponent },
+      { 
+        path: 'account', component: AccountComponent,
+        children: [
+          {
+            path: 'address', component: AddressComponent,
+            children: [
+              { path: '', component: AddressStartComponent },
+              { path: 'new', component: AddressEditComponent },
+              { path: ':id', component: AddressDetailComponent },
+              { path: ':id/edit', component: AddressEditComponent }
+            ]
+          }
+        ]
+      },
       { path: 'signup', component: SignUpComponent },
       { path: 'signin', component: SignInComponent },
       { path: 'shop', component: ShopComponent },

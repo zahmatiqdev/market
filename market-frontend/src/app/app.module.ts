@@ -21,7 +21,8 @@ import { AddressComponent } from './account/address/address.component';
 import { AddressDetailComponent } from './account/address/address-detail/address-detail.component';
 import { AddressEditComponent } from './account/address/address-edit/address-edit.component';
 import { AddressListComponent } from './account/address/address-list/address-list.component';
-import { AddressStartComponent } from './account/address/address-start/address-start.component';
+import { OrderListComponent } from './account/order-list/order-list.component';
+import { OrderDetailComponent } from './account/order-list/order-detail/order-detail.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AddressStartComponent } from './account/address/address-start/address-s
     AddressDetailComponent,
     AddressEditComponent,
     AddressListComponent,
-    AddressStartComponent
+    OrderListComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,7 @@ import { AddressStartComponent } from './account/address/address-start/address-s
           {
             path: 'address', component: AddressComponent,
             children: [
-              { path: '', component: AddressStartComponent },
+              { path: '', component: AddressListComponent },
               { path: 'new', component: AddressEditComponent },
               { path: ':id', component: AddressDetailComponent },
               { path: ':id/edit', component: AddressEditComponent }

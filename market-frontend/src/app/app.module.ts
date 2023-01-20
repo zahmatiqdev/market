@@ -23,6 +23,7 @@ import { AddressEditComponent } from './account/address/address-edit/address-edi
 import { AddressListComponent } from './account/address/address-list/address-list.component';
 import { OrderListComponent } from './account/order-list/order-list.component';
 import { OrderDetailComponent } from './account/order-list/order-detail/order-detail.component';
+import { PersonalInfoComponent } from './account/personal-info/personal-info.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { OrderDetailComponent } from './account/order-list/order-detail/order-de
     AddressEditComponent,
     AddressListComponent,
     OrderListComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    PersonalInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -62,13 +64,14 @@ import { OrderDetailComponent } from './account/order-list/order-detail/order-de
               { path: ':id', component: AddressDetailComponent },
               { path: ':id/edit', component: AddressEditComponent }
             ]
-          }
-        ]
-      },
-      {
-        path: 'order-list', component: OrderListComponent,
-        children: [
-          { path: ':id', component: OrderDetailComponent }
+          },
+          {
+            path: 'order-list', component: OrderListComponent,
+            children: [
+              { path: ':id', component: OrderDetailComponent }
+            ]
+          },
+          { path: 'personal-info', component: PersonalInfoComponent }
         ]
       },
       { path: 'signup', component: SignUpComponent },

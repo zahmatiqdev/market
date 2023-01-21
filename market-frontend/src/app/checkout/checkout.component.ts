@@ -124,7 +124,7 @@ export class CheckoutComponent implements OnInit {
       note: this.orderNote,
       address: this.userAddressIdSelected,
       products: this.onCreateProductsItem(),
-      price: 220
+      price: this.onTotalPrice()
     }
     console.log("ORDER Object NOTE: " + orderObject.note)
     console.log("ORDER Object Address: " + orderObject.address)

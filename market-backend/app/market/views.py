@@ -142,6 +142,9 @@ class OrderCreateAPIView(generics.CreateAPIView):
     serializer_class = serializers.OrderSerializerCreate
     queryset = Order.objects.all()
 
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
@@ -153,3 +156,7 @@ class OrderListAPIView(generics.ListAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = serializers.OrderSerializerCreate
     queryset = Order.objects.all()
+
+    def get_queryset(self):
+        """Returns objects for the current authenticated user only"""
+        return self.queryset.filter(user=self.request.user).order_by('-id')

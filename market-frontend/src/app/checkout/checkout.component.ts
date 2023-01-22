@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { ProfileService } from '../services/profile.service';
-import { CheckoutService } from '../services/checkout.service';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -23,7 +23,7 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private cartService: CartService,
               private profileService: ProfileService,
-              private checkoutService: CheckoutService) {}
+              private orderService: OrderService) {}
 
   ngOnInit() {
     this.onCheckAuthenticate();
@@ -129,7 +129,7 @@ export class CheckoutComponent implements OnInit {
     console.log("ORDER Object NOTE: " + orderObject.note)
     console.log("ORDER Object Address: " + orderObject.address)
 
-    this.checkoutService.postCreateOrderRequest(orderObject)
+    this.orderService.postCreateOrderRequest(orderObject)
         .subscribe(data => {
           console.log("ORDER: " + data);
 

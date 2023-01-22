@@ -21,9 +21,11 @@ import { AddressComponent } from './account/address/address.component';
 import { AddressDetailComponent } from './account/address/address-detail/address-detail.component';
 import { AddressEditComponent } from './account/address/address-edit/address-edit.component';
 import { AddressListComponent } from './account/address/address-list/address-list.component';
-import { OrderListComponent } from './account/order-list/order-list.component';
-import { OrderDetailComponent } from './account/order-list/order-detail/order-detail.component';
 import { PersonalInfoComponent } from './account/personal-info/personal-info.component';
+import { OrderComponent } from './account/order/order.component';
+import { OrderListComponent } from './account/order/order-list/order-list.component';
+import { OrderDetailComponent } from './account/order/order-detail/order-detail.component';
+import { OrderItemComponent } from './account/order/order-list/order-item/order-item.component';
 
 
 @NgModule({
@@ -42,9 +44,11 @@ import { PersonalInfoComponent } from './account/personal-info/personal-info.com
     AddressDetailComponent,
     AddressEditComponent,
     AddressListComponent,
+    PersonalInfoComponent,
+    OrderComponent,
     OrderListComponent,
     OrderDetailComponent,
-    PersonalInfoComponent
+    OrderItemComponent
   ],
   imports: [
     BrowserModule,
@@ -65,13 +69,13 @@ import { PersonalInfoComponent } from './account/personal-info/personal-info.com
               { path: ':id/edit', component: AddressEditComponent }
             ]
           },
+          { path: 'personal-info', component: PersonalInfoComponent },
           {
-            path: 'order-list', component: OrderListComponent,
+            path: 'order', component: OrderComponent,
             children: [
               { path: ':id', component: OrderDetailComponent }
             ]
           },
-          { path: 'personal-info', component: PersonalInfoComponent }
         ]
       },
       { path: 'signup', component: SignUpComponent },

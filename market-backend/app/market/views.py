@@ -160,3 +160,13 @@ class OrderListAPIView(generics.ListAPIView):
     def get_queryset(self):
         """Returns objects for the current authenticated user only"""
         return self.queryset.filter(user=self.request.user).order_by('-id')
+
+
+class OrderDetailAPIView(generics.RetrieveAPIView):
+    """Manage Detail Order in database"""
+
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    queryset = Order.objects.all()
+    serializer_class = serializers.OrderSerializerCreate
+    lookup_field = 'id'

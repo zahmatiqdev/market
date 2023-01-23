@@ -94,3 +94,22 @@ class OrderSerializerCreate(serializers.ModelSerializer):
         for product_data in products_data:
             OrderItem.objects.create(order=order, **product_data)
         return order
+
+
+class OrderItemWithDetailSerializer(serializers.ModelSerializer):
+    """Serializer for OrderItem object."""
+    product = ProductSerializer(read_only=True)
+
+    class Meta:
+        model = OrderItem
+        fields = ['product', 'quantity']
+
+
+class OrderSerializerList(serializers.ModelSerializer):
+    """Serializer for Order object"""
+    products = OrderItemWithDetailSerializer(many=True)
+
+    class Meta:
+        model = Order
+        fields = ['id', 'delivery', 'note', 'address', 'products', 'price']
+        read_only_field = ('user',)

@@ -154,7 +154,7 @@ class OrderListAPIView(generics.ListAPIView):
 
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
-    serializer_class = serializers.OrderSerializerCreate
+    serializer_class = serializers.OrderSerializerList
     queryset = Order.objects.all()
 
     def get_queryset(self):
@@ -168,5 +168,5 @@ class OrderDetailAPIView(generics.RetrieveAPIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
     queryset = Order.objects.all()
-    serializer_class = serializers.OrderSerializerCreate
+    serializer_class = serializers.OrderSerializerList
     lookup_field = 'id'

@@ -22,16 +22,40 @@
         <div class="row">
             <div class="col-12 col-md-5 col-sm-12 col-lg-3">
                 <div class="nav flex-column nav-pills">
-                    <a class="nav-link active" routerLink="personal-info">Personal Info</a>
+                    <a 
+                        class="nav-link" 
+                        routerLinkActive="active" 
+                        [routerLinkActiveOptions]="{exact: true}" 
+                        routerLink="personal-info"
+                    >
+                        Personal Info
+                    </a>
                 </div>
                 <div class="nav flex-column nav-pills">
-                    <a class="nav-link" routerLink="address" >Address</a>
+                    <a 
+                        class="nav-link" 
+                        routerLinkActive="active" 
+                        routerLink="address" 
+                    >
+                        Address
+                    </a>
                 </div>
                 <div class="nav flex-column nav-pills">
-                    <a class="nav-link" routerLink="order" >Orders</a>
+                    <a 
+                        class="nav-link" 
+                        routerLinkActive="active" 
+                        routerLink="order" 
+                    >
+                        Orders
+                    </a>
                 </div>
                 <div class="nav flex-column nav-pills">
-                    <a class="nav-link" routerLink="/">Log Out</a>
+                    <a 
+                        class="nav-link" 
+                        routerLink="/"
+                    >
+                        Log Out
+                    </a>
                 </div>
             </div>
 

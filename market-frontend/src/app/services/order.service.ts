@@ -24,7 +24,7 @@ export class OrderService {
     return this.http.get(this.baseURL + 'api/market/order/', {'headers':headers})
   }
 
-  getRetrieveOrderRequest(id: string): Observable<any>{
+  getRetrieveOrderRequest(id: number): Observable<any>{
     const headers = { 'content-type': 'application/json' };
     return this.http.get(this.baseURL + 'api/market/order/' + id + '/', {'headers':headers})
   }

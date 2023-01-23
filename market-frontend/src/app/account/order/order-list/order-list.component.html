@@ -3,7 +3,7 @@
         <app-order-item
             *ngFor="let orderEl of orders; let i = index"
             [order]="orderEl"
-            [index]="i">
+            [index]="orderEl.id">
         </app-order-item>
     </div>
 </div>

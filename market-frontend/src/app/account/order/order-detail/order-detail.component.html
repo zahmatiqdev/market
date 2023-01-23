@@ -1,1 +1,27 @@
-<p>order-detail works!</p>
+<div style="border-radius: 5px; border: 1px solid #ccc; padding-left: 5%;">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Order ID: {{ orders.id }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h4>Delivery: {{ orders.delivery }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+        <h4>Note: {{ orders.note }}</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div style="padding-left: 25px;">
+                <ul *ngFor="let item of orders.products; let i = index">
+                    <li>Product: {{ item.product.name }} - Quantity: {{ item.quantity }}</li>
+                </ul>
+        </div>
+        </div>
+    </div>
+</div>

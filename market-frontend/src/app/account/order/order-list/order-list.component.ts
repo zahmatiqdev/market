@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { OrderService } from 'src/app/services/order.service';
@@ -11,7 +12,9 @@ export class OrderListComponent implements OnInit {
 
   orders: any;
 
-  constructor(private orderService: OrderService){}
+  constructor(private orderService: OrderService,
+              private router: Router,
+              private route: ActivatedRoute){}
 
   ngOnInit(): void {
     this.orders = this.onListOrders();

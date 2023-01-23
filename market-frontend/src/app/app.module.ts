@@ -26,6 +26,7 @@ import { OrderComponent } from './account/order/order.component';
 import { OrderListComponent } from './account/order/order-list/order-list.component';
 import { OrderDetailComponent } from './account/order/order-detail/order-detail.component';
 import { OrderItemComponent } from './account/order/order-list/order-item/order-item.component';
+import { AccountDashboardComponent } from './account/account-dashboard/account-dashboard.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { OrderItemComponent } from './account/order/order-list/order-item/order-
     OrderComponent,
     OrderListComponent,
     OrderDetailComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    AccountDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,7 @@ import { OrderItemComponent } from './account/order/order-list/order-item/order-
       { 
         path: 'account', component: AccountComponent,
         children: [
+          { path: '', component: AccountDashboardComponent },
           {
             path: 'address', component: AddressComponent,
             children: [

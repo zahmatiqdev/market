@@ -1,0 +1,18 @@
+#btn-style {
+    background-color: #cc071e;
+	font-size: 18px;
+	letter-spacing: 2px;
+	width: 100%;
+	margin-top: 10px;
+}
+
+#btn-style:hover {
+    color: #cc071e;
+	background-color: pink;
+    border-color: #cc071e;
+}
+
+#btn-style:active {
+    color: white;
+    background-color: green;
+}

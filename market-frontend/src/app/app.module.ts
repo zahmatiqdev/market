@@ -28,6 +28,7 @@ import { OrderDetailComponent } from './account/order/order-detail/order-detail.
 import { OrderItemComponent } from './account/order/order-list/order-item/order-item.component';
 import { AccountDashboardComponent } from './account/account-dashboard/account-dashboard.component';
 import { AddressItemComponent } from './account/address/address-list/address-item/address-item.component';
+import { AddressCreateComponent } from './account/address/address-create/address-create.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { AddressItemComponent } from './account/address/address-list/address-ite
     OrderDetailComponent,
     OrderItemComponent,
     AccountDashboardComponent,
-    AddressItemComponent
+    AddressItemComponent,
+    AddressCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,7 @@ import { AddressItemComponent } from './account/address/address-list/address-ite
           {
             path: 'address', component: AddressComponent,
             children: [
-              { path: 'create', component: AddressEditComponent },
+              { path: 'create', component: AddressCreateComponent },
               { path: ':id', component: AddressDetailComponent },
               { path: ':id/edit', component: AddressEditComponent }
             ]

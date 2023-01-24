@@ -80,6 +80,7 @@ background-size: cover;background-position: top center;background-repeat:no-repe
                                 style="margin-top: 15px;"
                                 type="submit" 
                                 class="site-btn"
+                                id="btn-style-submit-info"
                                 (click)="onSubmitInfo(deliveryDate.value, orderNote.value)" 
                             >
                                 SUBMIT INFo
@@ -110,7 +111,7 @@ background-size: cover;background-position: top center;background-repeat:no-repe
                             <div class="checkout__order__subtotal">Subtotal <span>{{ onSubtotalPrice()| number }} €</span></div>
                             <div class="checkout__order__tax">Tax <span>{{ onTaxPrice()| number }} €</span></div>
                             <div class="checkout__order__total">Total <span>{{ onTotalPrice()| number }} €</span></div>
-                            <button (click)="onSubmitCheckout()" type="submit" class="site-btn">SUBMIT ORDER</button>
+                            <button id="btn-style" (click)="onSubmitCheckout()" type="submit" class="site-btn">SUBMIT ORDER</button>
                         </div>
                     </div>
                 </div>

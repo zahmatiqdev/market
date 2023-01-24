@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
+import { Address } from 'src/app/models/address.model';
 import { AddressService } from 'src/app/services/address.service';
 
 @Component({
@@ -10,25 +12,78 @@ import { AddressService } from 'src/app/services/address.service';
 })
 export class AddressListComponent implements OnInit {
 
-  addresses: any;
+  // addresses: any;
+
+  addresses: Address[];
+  subscription: Subscription;
 
   constructor(private addressService: AddressService,
               private router: Router,
               private route: ActivatedRoute){}
 
-  ngOnInit(): void {
-    this.addresses = this.onListAddress();
+  ngOnInit() {
+    this.subscription = this.addressService.addressesChanged
+      .subscribe(
+        (addresses: Address[]) => {
+          this.addresses = addresses;
+        }
+      );
+    this.addressService.onListAddress();
+    this.addresses = this.addressService.getAddresses();
+    console.log("ADDDDDDDDDDDDDDDDDDDDDDDDD: " + this.addresses);
   }
 
-  onListAddress() {
-    this.addressService.getListAddressRequest()
-        .subscribe(data => {
-          console.log(data);
-          this.addresses = data;
-    })
-  }
+
+  // onListAddress() {
+  //     this.addressService.getListAddressRequest()
+  //         .subscribe(data => {
+  //           console.log(data);
+  //     });
+  // }
 
   onCreateAddress() {
     this.router.navigate(['create'], {relativeTo: this.route});
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// onListAddress() {
+//   this.addressService.getListAddressRequest()
+//       .subscribe(data => {
+//         console.log(data);
+//         this.addresses = data;
+//   })
+// }
+
+// onCreateAddress() {
+//   this.router.navigate(['create'], {relativeTo: this.route});
+// }

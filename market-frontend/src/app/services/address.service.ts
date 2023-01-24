@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable, Subject } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { Address } from '../models/address.model';
 export class AddressService {
 
   addressesChanged = new Subject<Address[]>();
-  private addresses: Address[] = [];
+  addresses: Address[] = [];
 
   baseURL: string = "http://127.0.0.1:8000/";
 
@@ -19,6 +19,14 @@ export class AddressService {
   getListAddressRequest(): Observable<any>{
     const headers = { 'content-type': 'application/json'};
     return this.http.get(this.baseURL + 'api/market/address/', {'headers':headers})
+  }
+
+  onListAddress() {
+    this.getListAddressRequest()
+        .subscribe(data => {
+          console.log(data);
+          this.addresses = data
+    });
   }
 
   postCreateAddressRequest(address: Address): Observable<any>{
@@ -38,8 +46,18 @@ export class AddressService {
     return this.http.get(this.baseURL + 'api/market/address/' + id + '/', {'headers':headers})
   }
 
+  // updateAddressesListWithObject(address: {id: number, name: string}){
+  //   this.addresses.push(address);
+  // }
+
+  addToAddressListWithList(address: Array<{id: number, name: string}>){
+    this.addresses = address;
+  }
+
   getAddresses() {
-    return this.addresses.slice();
+    // return this.addresses.slice();
+    
+    return this.addresses;
   }
 
   getAddress(index: number) {

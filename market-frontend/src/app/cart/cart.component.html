@@ -76,7 +76,14 @@ background-size: cover;background-position: top center;background-repeat:no-repe
                         <li>Tax <span>{{ onTaxPrice()| number }} €</span></li>
                         <li>Total <span>{{ onTotalPrice()| number }} €</span></li>
                     </ul>
-                    <a routerLink="/checkout" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    <div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="site-btn button_hover" id="btn-style" type="submit" routerLink="/checkout">PROCEED TO CHECKOUT</button>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -17,15 +17,4 @@ export class ProfileService {
     const headers = { 'content-type': 'application/json'};
     return this.http.get(this.baseURL + 'api/user/account/', {'headers':headers})
   }
-
-  getListAddressRequest(): Observable<any>{
-    const headers = { 'content-type': 'application/json'};
-    return this.http.get(this.baseURL + 'api/market/address/', {'headers':headers})
-  }
-
-  postCreateAddressRequest(address: Address): Observable<any>{
-    const headers = { 'content-type': 'application/json' };
-    const body=JSON.stringify(address);
-    return this.http.post(this.baseURL + 'api/market/address/', body, {'headers':headers})
-  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { ProfileService } from '../services/profile.service';
 import { OrderService } from '../services/order.service';
+import { AddressService } from '../services/address.service';
 
 @Component({
   selector: 'app-checkout',
@@ -23,7 +24,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private cartService: CartService,
               private profileService: ProfileService,
-              private orderService: OrderService) {}
+              private orderService: OrderService,
+              private addressService: AddressService) {}
 
   ngOnInit() {
     this.onCheckAuthenticate();
@@ -64,22 +66,26 @@ export class CheckoutComponent implements OnInit {
   }
 
   onGetUserAddress(){
-    this.profileService.getListAddressRequest()
+    this.addressService.getListAddressRequest()
         .subscribe(data => {
           console.log(data);
           this.userAddress = data;
     })
   }
 
-  onCreateUserAddress(postData: {name: string}){
-    this.profileService.postCreateAddressRequest(postData)
+  onCreateUserAddress(postData: any){
+    this.addressService.postCreateAddressRequest(postData)
         .subscribe(data => {
           console.log(data);
           this.userAddress = data;
     })
   }
   onSubmitAddress(addressName: string){
-    return this.onCreateUserAddress({name: addressName})
+    let bodyObject: any;
+    bodyObject = {
+      name: addressName
+    }
+    return this.onCreateUserAddress(bodyObject)
   }
 
   onSelectAddress(address: any){

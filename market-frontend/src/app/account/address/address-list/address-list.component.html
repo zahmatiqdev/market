@@ -1,1 +1,16 @@
-<p>address-list works!</p>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success" (click)="onCreateAddress()">New Address</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <app-address-item
+            *ngFor="let addressEl of addresses"
+            [address]="addressEl">
+        </app-address-item>
+    </div>
+</div>
+  
+  

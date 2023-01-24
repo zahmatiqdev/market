@@ -1,7 +1,7 @@
 import { CartService } from 'src/app/services/cart.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Router, RouterModule, Routes } from '@angular/router';
 
@@ -27,6 +27,7 @@ import { OrderListComponent } from './account/order/order-list/order-list.compon
 import { OrderDetailComponent } from './account/order/order-detail/order-detail.component';
 import { OrderItemComponent } from './account/order/order-list/order-item/order-item.component';
 import { AccountDashboardComponent } from './account/account-dashboard/account-dashboard.component';
+import { AddressItemComponent } from './account/address/address-list/address-item/address-item.component';
 
 
 @NgModule({
@@ -50,11 +51,13 @@ import { AccountDashboardComponent } from './account/account-dashboard/account-d
     OrderListComponent,
     OrderDetailComponent,
     OrderItemComponent,
-    AccountDashboardComponent
+    AccountDashboardComponent,
+    AddressItemComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
@@ -66,8 +69,7 @@ import { AccountDashboardComponent } from './account/account-dashboard/account-d
           {
             path: 'address', component: AddressComponent,
             children: [
-              { path: '', component: AddressListComponent },
-              { path: 'new', component: AddressEditComponent },
+              { path: 'create', component: AddressEditComponent },
               { path: ':id', component: AddressDetailComponent },
               { path: ':id/edit', component: AddressEditComponent }
             ]

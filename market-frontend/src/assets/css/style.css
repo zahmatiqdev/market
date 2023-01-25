@@ -1923,6 +1923,11 @@ ol {
 	display: inline-block;
 }
 
+.shoping__cart__table table tbody tr td.shoping__cart__item h4 {
+	color: #1c1c1c;
+	display: inline-block;
+}
+
 .shoping__cart__table table tbody tr td.shoping__cart__price {
 	font-size: 18px;
 	color: #1c1c1c;

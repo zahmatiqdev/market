@@ -36,6 +36,7 @@ background-size: cover;background-position: top center;background-repeat:no-repe
                         <tbody *ngFor="let item of items; let i = index">
                             <tr>
                                 <td class="shoping__cart__item">
+                                    <img style="height: 100px; width: 100px;" src="{{ item.image}}" alt="">
                                     <h4><strong>{{ item.product }}</strong></h4>
                                 </td>
                                 <td class="shoping__cart__price">

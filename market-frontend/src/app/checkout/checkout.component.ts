@@ -1,3 +1,5 @@
+import { Product } from 'src/app/models/product.model';
+import { Subject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { ProfileService } from '../services/profile.service';
@@ -130,11 +132,12 @@ export class CheckoutComponent implements OnInit {
       note: this.orderNote,
       address: this.userAddressIdSelected,
       products: this.onCreateProductsItem(),
-      price: this.onTotalPrice()
+      price: this.onTotalPrice().toFixed(2)
     }
     console.log("ORDER Object NOTE: " + orderObject.note)
     console.log("ORDER Object Address: " + orderObject.address)
-
+    console.log("ORDER Object products: " + orderObject.products)
+    console.log("ORDER Object price: " + orderObject.price)
     this.orderService.postCreateOrderRequest(orderObject)
         .subscribe(data => {
           console.log("ORDER: " + data);

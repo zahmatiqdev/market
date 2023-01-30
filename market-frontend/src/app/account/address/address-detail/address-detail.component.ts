@@ -11,7 +11,6 @@ import { AddressService } from 'src/app/services/address.service';
 })
 export class AddressDetailComponent implements OnInit {
 
-  address_object: Address;
   address: Address;
   id: number;
 
@@ -44,7 +43,7 @@ export class AddressDetailComponent implements OnInit {
   }
 
   onDeleteAddress(){
-    this.addressService.deleteAddress(this.id, this.address_object);
+    this.addressService.deleteAddress(this.id);
     this.router.navigate(['/address']);
   }
 

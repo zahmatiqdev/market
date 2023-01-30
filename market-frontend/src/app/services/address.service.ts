@@ -85,11 +85,9 @@ export class AddressService {
     this.addressesChanged.next(this.addresses.slice());
   }
 
-  deleteAddress(index: number, address: Address) {
+  deleteAddress(index: number) {
     this.delDeleteAddressRequest(index)
-      .subscribe(() => {
-        // this.addresses.splice(index, 1);
-      })
+      .subscribe(() => {})
     
     const item = this.addresses.findIndex(p => p.id === index);
     this.addresses.splice(item, 1);

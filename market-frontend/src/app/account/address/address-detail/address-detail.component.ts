@@ -11,7 +11,8 @@ import { AddressService } from 'src/app/services/address.service';
 })
 export class AddressDetailComponent implements OnInit {
 
-  address: any;
+  address_object: Address;
+  address: Address;
   id: number;
 
   constructor(private router: Router,
@@ -24,16 +25,17 @@ export class AddressDetailComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.address = this.onGetAddressDetail(this.id)
+          this.onGetAddressDetail(this.id)
         }
       );
   }
 
   onGetAddressDetail(id: number) {
-    this.addressService.getRetrieveAddressRequest(id)
+    return this.addressService.getRetrieveAddressRequest(id)
         .subscribe(data => {
           console.log(data);
-          this.address = data;
+          this.address = new Address(data.id, data.name)
+
     })
   }
   
@@ -41,6 +43,10 @@ export class AddressDetailComponent implements OnInit {
     this.router.navigate(['edit'], {relativeTo: this.route});
   }
 
+  onDeleteAddress(){
+    this.addressService.deleteAddress(this.id, this.address_object);
+    this.router.navigate(['/address']);
+  }
 
 }
 

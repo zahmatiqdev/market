@@ -12,8 +12,6 @@ import { AddressService } from 'src/app/services/address.service';
 })
 export class AddressListComponent implements OnInit {
 
-  // addresses: any;
-
   addresses: Address[];
   subscription: Subscription;
 
@@ -28,62 +26,14 @@ export class AddressListComponent implements OnInit {
           this.addresses = addresses;
         }
       );
-    this.addressService.onListAddress();
     this.addresses = this.addressService.getAddresses();
-    console.log("ADDDDDDDDDDDDDDDDDDDDDDDDD: " + this.addresses);
   }
-
-
-  // onListAddress() {
-  //     this.addressService.getListAddressRequest()
-  //         .subscribe(data => {
-  //           console.log(data);
-  //     });
-  // }
 
   onCreateAddress() {
     this.router.navigate(['create'], {relativeTo: this.route});
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// onListAddress() {
-//   this.addressService.getListAddressRequest()
-//       .subscribe(data => {
-//         console.log(data);
-//         this.addresses = data;
-//   })
-// }
-
-// onCreateAddress() {
-//   this.router.navigate(['create'], {relativeTo: this.route});
-// }

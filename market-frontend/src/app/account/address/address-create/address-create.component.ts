@@ -17,7 +17,8 @@ export class AddressCreateComponent implements OnInit {
     this.addressService.postCreateAddressRequest(postData)
         .subscribe(data => {
           console.log(data);
-    })
+          this.addressService.addAddress(data);
+    });
   }
 
   onCancel() {}

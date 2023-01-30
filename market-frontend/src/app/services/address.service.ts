@@ -10,23 +10,21 @@ import { Address } from '../models/address.model';
 export class AddressService {
 
   addressesChanged = new Subject<Address[]>();
-  addresses: Address[] = [];
+  private addresses: Address[] = [];
+  addressDetail: any;
 
   baseURL: string = "http://127.0.0.1:8000/";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getListAddressRequest(): Observable<any>{
     const headers = { 'content-type': 'application/json'};
     return this.http.get(this.baseURL + 'api/market/address/', {'headers':headers})
   }
 
-  onListAddress() {
-    this.getListAddressRequest()
-        .subscribe(data => {
-          console.log(data);
-          this.addresses = data
-    });
+  getRetrieveAddressRequest(id: number): Observable<any>{
+    const headers = { 'content-type': 'application/json' };
+    return this.http.get<{ [key: string]: Address }>(this.baseURL + 'api/market/address/' + id + '/', {'headers':headers})
   }
 
   postCreateAddressRequest(address: Address): Observable<any>{
@@ -41,27 +39,31 @@ export class AddressService {
     return this.http.put(this.baseURL + 'api/market/address/' + id + '/', body, {'headers':headers})
   }
 
-  getRetrieveAddressRequest(id: number): Observable<any>{
+  delDeleteAddressRequest(id: number): Observable<any>{
     const headers = { 'content-type': 'application/json' };
-    return this.http.get(this.baseURL + 'api/market/address/' + id + '/', {'headers':headers})
+    return this.http.delete(this.baseURL + 'api/market/address/' + id + '/', {'headers':headers})
   }
 
-  // updateAddressesListWithObject(address: {id: number, name: string}){
-  //   this.addresses.push(address);
-  // }
 
-  addToAddressListWithList(address: Array<{id: number, name: string}>){
-    this.addresses = address;
+  setAddresses(addresses: Address[]) {
+    this.addresses = addresses;
+    this.addressesChanged.next(this.addresses.slice());
   }
 
   getAddresses() {
-    // return this.addresses.slice();
-    
-    return this.addresses;
+    return this.addresses.slice();
   }
 
   getAddress(index: number) {
-    return this.addresses[index];
+    for (let i = 0; i < this.addresses.length; i++) {
+      if (this.addresses[i].id === index){
+        this.addressDetail = {
+          'id': this.addresses[i].id,
+          'name': this.addresses[i].name
+        };
+      }
+    }
+    return this.addressDetail
   }
 
   addAddress(address: Address) {
@@ -72,9 +74,26 @@ export class AddressService {
   updateAddress(index: number, newAddress: Address) {
     this.putUpdateAddressRequest(index, newAddress)
         .subscribe(data => {
-          console.log("PUTTTTT: " + data);
+          console.log("Update: " + data);
     });
-    this.addresses[index] = newAddress;
+    for (let i = 0; i < this.addresses.length; i++) {
+      if (this.addresses[i].id === index){
+        this.addresses[i].name = newAddress.name;
+      }
+    }
+    
+    this.addressesChanged.next(this.addresses.slice());
+  }
+
+  deleteAddress(index: number, address: Address) {
+    this.delDeleteAddressRequest(index)
+      .subscribe(() => {
+        // this.addresses.splice(index, 1);
+      })
+    
+    const item = this.addresses.findIndex(p => p.id === index);
+    this.addresses.splice(item, 1);
+
     this.addressesChanged.next(this.addresses.slice());
   }
 

@@ -10,7 +10,10 @@ export class AddressItemComponent implements OnInit {
   @Input() address: Address;
   @Input() index: number;
 
+  
   ngOnInit() {
+    console.log("IDDDDDDDDDD: " + this.address.id);
+    console.log("ADDREEESSSS: " + this.address.name);
   }
 
 }

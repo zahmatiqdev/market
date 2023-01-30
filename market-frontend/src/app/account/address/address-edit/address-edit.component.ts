@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
@@ -31,8 +32,6 @@ export class AddressEditComponent implements OnInit {
   onSubmit() {
     if (this.editMode) {
       this.addressService.updateAddress(this.id, this.addressForm.value);
-    } else {
-      this.addressService.addAddress(this.addressForm.value);
     }
     this.onCancel();
   }
@@ -42,11 +41,11 @@ export class AddressEditComponent implements OnInit {
   }
 
   private initForm() {
-    let addressName: string = '';
+    let addressName = '';
 
     if (this.editMode) {
-      const address = this.addressService.getAddress(this.id);
-      addressName = address.name || '';      
+      const address = this.addressService.getAddress(+this.id);
+      addressName = address.name;
     }
 
     this.addressForm = new FormGroup({

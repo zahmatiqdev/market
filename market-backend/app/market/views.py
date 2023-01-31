@@ -125,7 +125,7 @@ class ProductListAPIView(generics.ListAPIView):
         return qs
 
 
-class ProductDetailAPIView(generics.RetrieveAPIView):
+class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     """Manage Detail Product in database"""
 
     permission_classes = ()

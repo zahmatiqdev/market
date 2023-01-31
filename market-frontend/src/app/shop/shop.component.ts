@@ -11,17 +11,18 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ShopComponent implements OnInit {
 
-  product = new Product();
+  product = Product;
   products: any;
 
   constructor(private productService: ProductService,
               private cartService: CartService){}
+  
   ngOnInit(): void {
     this.products = this.onListProducts();
   }
 
   onListProducts() {
-    this.productService.listProductsRequest()
+    this.productService.getListProductRequest()
         .subscribe(data => {
           console.log(data);
           this.products = data;

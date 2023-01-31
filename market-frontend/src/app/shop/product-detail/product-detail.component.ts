@@ -27,7 +27,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onGetProductDetail() {
-    this.productService.getProductDetailRequest(this.id)
+    this.productService.getRetrieveProductRequest(this.id)
         .subscribe(data => {
           console.log(data);
           this.product = data;

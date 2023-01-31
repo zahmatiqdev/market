@@ -1,25 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
+
 import { Address } from '../models/address.model';
+import { Product } from '../models/product.model';
 import { AddressService } from '../services/address.service';
+import { ProductService } from '../services/product.service';
 
 @Injectable({ providedIn: 'root' })
 export class DataStorageService {
 
-  constructor(private http: HttpClient, private addressService: AddressService) {}
-
-  storeAddresses() {
-    const addresses = this.addressService.getAddresses();
-    this.http
-      .put(
-        'https://ng-course-recipe-book-65f10.firebaseio.com/recipes.json',
-        addresses
-      )
-      .subscribe(response => {
-        console.log(response);
-      });
-  }
+  constructor(private http: HttpClient, 
+              private addressService: AddressService,
+              private productService: ProductService) {}
 
   fetchAddresses() {
     return this.addressService.getListAddressRequest()
@@ -28,14 +21,14 @@ export class DataStorageService {
           this.addressService.setAddresses(addresses);
         })
       )
-    // return this.http
-    //   .get<Address[]>(
-    //     'https://ng-course-recipe-book-65f10.firebaseio.com/recipes.json'
-    //   )
-    //   .pipe(
-    //     tap(addresses => {
-    //       this.addressService.setRecipes(addresses);
-    //     })
-    //   )
+  }
+
+  fetchProducts(){
+    return this.productService.getListProductRequest()
+      .pipe(
+        tap(products => {
+          this.productService.setProducts(products);
+        })
+      )
   }
 }

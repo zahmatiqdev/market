@@ -1,0 +1,106 @@
+<div class="row">
+    <h3>Add new product: </h3>
+    <div class="col-md-8">
+      <form #newProductForm="ngForm" (ngSubmit)="onCreateProduct(newProductForm.value)">
+        <div class="form-group mb-4">
+            <label for="category">Category</label>
+            <select class="form-control" name="category" id="category" multiple>
+                <option 
+                    *ngFor="let categoryEl of categories" 
+                    value="{{ categoryEl.id }}"
+                    (click)="onSelectCategory(categoryEl.name)" 
+                >
+                    {{ categoryEl.name }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group mb-4">
+            <label for="unit">Unit</label>
+            <select class="form-control" name="unit" id="unit">
+                <option value="none" selected disabled hidden> Select an Unit</option>
+                <option 
+                    *ngFor="let unitEl of units" 
+                    value="{{ unitEl.id }}"
+                    (click)="onSelectUnit(unitEl)" 
+                >
+                    {{ unitEl.name }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group mb-4">
+            <label for="name">Name</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="name"
+              required 
+              ngModel
+              name="name"
+              placeholder="Name"
+            />
+        </div>
+        <div class="form-group mb-4">
+            <label for="price">Price</label>
+            <input 
+              type="number" 
+              class="form-control" 
+              id="price"
+              required 
+              ngModel
+              name="price"
+              placeholder="Price"
+            />
+        </div>
+        <div class="form-group mb-4">
+            <label for="short_desc">Short Description</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="short_desc"
+              required 
+              ngModel
+              name="short_desc"
+              placeholder="Short Description"
+            />
+        </div>
+        <div class="form-group mb-4">
+            <label for="long_desc">Long Description</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="long_desc"
+              required 
+              ngModel
+              name="long_desc"
+              placeholder="Long Description"
+            />
+        </div>
+        <div class="form-group mb-4">
+            <label for="image">Image</label>
+            <input 
+              type="file" 
+              class="form-upload" 
+              id="image" 
+              ngModel
+              name="image"
+              accept="image/png, image/gif, image/jpeg"
+            />
+        </div>
+
+        <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!newProductForm.valid"
+        >
+            Create
+        </button>
+        <button
+            class="btn btn-default"
+            type="button"
+            (click)="onCancel()"
+        >
+            Cancel
+        </button>
+      </form>
+    </div>
+</div>

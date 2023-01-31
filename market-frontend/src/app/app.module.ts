@@ -29,7 +29,16 @@ import { OrderItemComponent } from './account/order/order-list/order-item/order-
 import { AccountDashboardComponent } from './account/account-dashboard/account-dashboard.component';
 import { AddressItemComponent } from './account/address/address-list/address-item/address-item.component';
 import { AddressCreateComponent } from './account/address/address-create/address-create.component';
-
+import { AddressResolverService } from './services/address-resolver.service';
+import { ProductResolverService } from './services/product-resolver.service';
+import { PanelComponent } from './panel/panel.component';
+import { PanelDashboardComponent } from './panel/panel-dashboard/panel-dashboard.component';
+import { PanelProductComponent } from './panel/panel-product/panel-product.component';
+import { PanelProductCreateComponent } from './panel/panel-product/panel-product-create/panel-product-create.component';
+import { PanelProductDetailComponent } from './panel/panel-product/panel-product-detail/panel-product-detail.component';
+import { PanelProductEditComponent } from './panel/panel-product/panel-product-edit/panel-product-edit.component';
+import { PanelProductListComponent } from './panel/panel-product/panel-product-list/panel-product-list.component';
+import { PanelProductItemComponent } from './panel/panel-product/panel-product-list/panel-product-item/panel-product-item.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +63,15 @@ import { AddressCreateComponent } from './account/address/address-create/address
     OrderItemComponent,
     AccountDashboardComponent,
     AddressItemComponent,
-    AddressCreateComponent
+    AddressCreateComponent,
+    PanelComponent,
+    PanelDashboardComponent,
+    PanelProductComponent,
+    PanelProductCreateComponent,
+    PanelProductDetailComponent,
+    PanelProductEditComponent,
+    PanelProductListComponent,
+    PanelProductItemComponent
   ],
   imports: [
     BrowserModule,
@@ -65,15 +82,49 @@ import { AddressCreateComponent } from './account/address/address-create/address
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { 
-        path: 'account', component: AccountComponent,
+        path:'panel', 
+        component: PanelComponent,
+        resolve: [ProductResolverService],
+        children: [
+          { path: '', component: PanelDashboardComponent },
+          {
+            path: 'product', component: PanelProductComponent,
+            children: [
+              { path: 'create', component: PanelProductCreateComponent },
+              { 
+                path: ':id', 
+                component: PanelProductDetailComponent, 
+                resolve: [ProductResolverService] 
+              },
+              { 
+                path: ':id/edit', 
+                component: PanelProductEditComponent, 
+                resolve: [ProductResolverService] 
+              }
+            ]
+          }
+        ]
+      },
+      { 
+        path: 'account', 
+        component: AccountComponent, 
+        resolve: [AddressResolverService],
         children: [
           { path: '', component: AccountDashboardComponent },
           {
             path: 'address', component: AddressComponent,
             children: [
               { path: 'create', component: AddressCreateComponent },
-              { path: ':id', component: AddressDetailComponent },
-              { path: ':id/edit', component: AddressEditComponent }
+              { 
+                path: ':id', 
+                component: AddressDetailComponent, 
+                resolve: [AddressResolverService] 
+              },
+              { 
+                path: ':id/edit', 
+                component: AddressEditComponent, 
+                resolve: [AddressResolverService] 
+              }
             ]
           },
           { path: 'personal-info', component: PersonalInfoComponent },

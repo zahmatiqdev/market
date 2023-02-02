@@ -9,7 +9,7 @@ export class Product {
   public price: number;
   public short_desc: string;
   public long_desc: string;
-  public image: string;
+  public image: File;
 
   constructor(
     id: number, 
@@ -19,7 +19,7 @@ export class Product {
     price: number, 
     short_desc: string, 
     long_desc: string, 
-    image: string) {
+    image: File) {
       this.id = id;
       this.category = category,
       this.unit = unit;

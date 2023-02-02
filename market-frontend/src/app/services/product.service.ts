@@ -27,10 +27,8 @@ export class ProductService {
     return this.http.get(this.baseURL + 'api/market/product/' + id + '/', {'headers':headers})
   }
 
-  postCreateProductRequest(product: Product): Observable<any>{
-    const headers = { 'content-type': 'application/json' };
-    const body=JSON.stringify(product);
-    return this.http.post(this.baseURL + 'api/market/product/create/', body, {'headers':headers})
+  postCreateProductRequest(product: any): Observable<any>{
+    return this.http.post(this.baseURL + 'api/market/product/create/', product)
   }
 
   patchUpdateProductRequest(id: number, product: Product): Observable<any>{

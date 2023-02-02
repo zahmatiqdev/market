@@ -1,14 +1,14 @@
 <div class="row">
     <h3>Add new product: </h3>
     <div class="col-md-8">
-      <form #newProductForm="ngForm" (ngSubmit)="onCreateProduct(newProductForm.value)">
+      <form (ngSubmit)="onCreateProduct(newProductForm)" #newProductForm="ngForm">
         <div class="form-group mb-4">
             <label for="category">Category</label>
-            <select class="form-control" name="category" id="category" multiple>
+            <select class="form-control" name="category" id="category" ngModel multiple>
                 <option 
                     *ngFor="let categoryEl of categories" 
                     value="{{ categoryEl.id }}"
-                    (click)="onSelectCategory(categoryEl.name)" 
+                    [ngValue]="categoryEl.name"
                 >
                     {{ categoryEl.name }}
                 </option>
@@ -16,12 +16,12 @@
         </div>
         <div class="form-group mb-4">
             <label for="unit">Unit</label>
-            <select class="form-control" name="unit" id="unit">
+            <select class="form-control" name="unit" id="unit" ngModel>
                 <option value="none" selected disabled hidden> Select an Unit</option>
                 <option 
                     *ngFor="let unitEl of units" 
                     value="{{ unitEl.id }}"
-                    (click)="onSelectUnit(unitEl)" 
+                    [ngValue]="unitEl.name" 
                 >
                     {{ unitEl.name }}
                 </option>
@@ -81,7 +81,7 @@
               type="file" 
               class="form-upload" 
               id="image" 
-              ngModel
+              (change)="onImageChange($event)"
               name="image"
               accept="image/png, image/gif, image/jpeg"
             />

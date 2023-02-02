@@ -17,8 +17,6 @@ export class PanelProductCreateComponent implements OnInit {
   units: Unit[];
   categories: Category[];
   
-  categoryList: any = [];
-  unitObject: any;
   imageObject: File;
 
   constructor(private productService: ProductService) {}

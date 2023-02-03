@@ -2,6 +2,37 @@
     <div class="col-xs-12">
         <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
             <div class="row">
+
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select class="form-control" name="category" id="category" formControlName="category" multiple>
+                            <option 
+                                *ngFor="let categoryEl of categories; let i = index" 
+                                value="{{ categoryEl.id }}"
+                                [ngValue]="categoryEl.name"
+                            >
+                                {{ categoryEl.name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="unit">Unit</label>
+                        <select class="form-control" name="unit" id="unit" formControlName="unit">
+                            <option 
+                                *ngFor="let unitEl of units; let i = index" 
+                                value="{{ unitEl.id }}"
+                                [ngValue]="unitEl.name"
+                            >
+                                {{ unitEl.name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="name">Name</label>

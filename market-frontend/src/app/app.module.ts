@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Router, RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,8 +28,6 @@ import { OrderItemComponent } from './account/order/order-list/order-item/order-
 import { AccountDashboardComponent } from './account/account-dashboard/account-dashboard.component';
 import { AddressItemComponent } from './account/address/address-list/address-item/address-item.component';
 import { AddressCreateComponent } from './account/address/address-create/address-create.component';
-import { AddressResolverService } from './services/address-resolver.service';
-import { ProductResolverService } from './services/product-resolver.service';
 import { PanelComponent } from './panel/panel.component';
 import { PanelDashboardComponent } from './panel/panel-dashboard/panel-dashboard.component';
 import { PanelProductComponent } from './panel/panel-product/panel-product.component';
@@ -78,71 +75,7 @@ import { PanelProductItemComponent } from './panel/panel-product/panel-product-l
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { 
-        path:'panel', 
-        component: PanelComponent,
-        resolve: [ProductResolverService],
-        children: [
-          { path: '', component: PanelDashboardComponent },
-          {
-            path: 'product', component: PanelProductComponent,
-            children: [
-              { path: 'create', component: PanelProductCreateComponent },
-              { 
-                path: ':id', 
-                component: PanelProductDetailComponent, 
-                resolve: [ProductResolverService] 
-              },
-              { 
-                path: ':id/edit', 
-                component: PanelProductEditComponent, 
-                resolve: [ProductResolverService] 
-              }
-            ]
-          }
-        ]
-      },
-      { 
-        path: 'account', 
-        component: AccountComponent, 
-        resolve: [AddressResolverService],
-        children: [
-          { path: '', component: AccountDashboardComponent },
-          {
-            path: 'address', component: AddressComponent,
-            children: [
-              { path: 'create', component: AddressCreateComponent },
-              { 
-                path: ':id', 
-                component: AddressDetailComponent, 
-                resolve: [AddressResolverService] 
-              },
-              { 
-                path: ':id/edit', 
-                component: AddressEditComponent, 
-                resolve: [AddressResolverService] 
-              }
-            ]
-          },
-          { path: 'personal-info', component: PersonalInfoComponent },
-          {
-            path: 'order', component: OrderComponent,
-            children: [
-              { path: ':id', component: OrderDetailComponent }
-            ]
-          },
-        ]
-      },
-      { path: 'signup', component: SignUpComponent },
-      { path: 'signin', component: SignInComponent },
-      { path: 'shop', component: ShopComponent },
-      { path: 'product/:id', component: ProductDetailComponent },
-      { path: 'cart', component: CartComponent },
-      { path: 'checkout', component: CheckoutComponent }
-    ])
+    AppRoutingModule
   ],
   providers: [ 
     CartService,
